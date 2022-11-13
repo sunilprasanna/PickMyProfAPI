@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  title: 'PickMyProf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
+  version: '1.0'
+paths:
+  /WeatherForecast:
+    get:
+      tags:
+        - WeatherForecast
+      operationId: GetProfessors
+      parameters:
+        - name: subjectPrefix
+          in: query
+          schema:
+            type: string
+        - name: couseNumber
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfessorDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfessorDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfessorDto'
+components:
+  schemas:
+    ProfessorDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        profile:
+          type: string
+          nullable: true
+        rating:
+          type: number
+          format: double
+      additionalProperties: false
